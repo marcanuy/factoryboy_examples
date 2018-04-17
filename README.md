@@ -2,7 +2,7 @@ FACTORYBOY EXAMPLES
 =======================
 
 Guide to set up a one-to-many relationship in Factoryboy + Django
-following the guide at: <>
+following the guide at: <https://simpleit.rocks/setting-up-a-factory-for-one-to-many-relationships-in-factoryboy/>
 
 
 # Install
