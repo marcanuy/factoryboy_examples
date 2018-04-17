@@ -18,7 +18,7 @@ class Player(models.Model):
 
 class Team(models.Model):
     """ 
-    Model representing a text Team.
+    Model representing a Team.
     """
     name = models.CharField(max_length=200, help_text="Team name")
 
