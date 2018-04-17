@@ -4,7 +4,25 @@ from myapp.factories import TeamFactory, PlayerFactory, TeamWithPlayersFactory
 from myapp.models import Team, Player
 
 class FactoriesTests(TestCase):
-    
+
+    def test_create_team_with_players(self):
+        team = TeamWithPlayersFactory.create()
+        
+        self.assertIsInstance(team, Team)
+        players = team.players.all()
+        self.assertTrue(len(players) > 0)
+        for player in players:
+            self.assertIsInstance(player, Player)
+
+    def test_create_team_with_fixed_amount_of_players(self):
+        team = TeamWithPlayersFactory.create(players=5)
+        
+        self.assertIsInstance(team, Team)
+        players = team.players.all()
+        self.assertTrue(len(players) == 5)
+        for player in players:
+            self.assertIsInstance(player, Player)
+        
     def test_create_players_with_same_team(self):
         team = TeamFactory.create()
         player1 = PlayerFactory.create(team=team)
@@ -23,13 +41,3 @@ class FactoriesTests(TestCase):
         self.assertIsInstance(player1, Player)
         self.assertIsInstance(player2, Player)
         self.assertNotEqual(player1.team, player2.team)
-
-    def test_create_team_with_players(self):
-        team = TeamWithPlayersFactory.create()
-        
-        self.assertIsInstance(team, Team)
-        players = team.players.all()
-        self.assertTrue(len(players) > 0)
-        for player in players:
-            self.assertIsInstance(player, Player)
-        

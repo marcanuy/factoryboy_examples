@@ -11,7 +11,7 @@ class TeamFactory(factory.django.DjangoModelFactory):
 class TeamWithPlayersFactory(TeamFactory):
     
     @factory.post_generation
-    def units(obj, create, extracted, **kwargs):
+    def players(obj, create, extracted, **kwargs):
         """
         If called like: TeamFactory(players=4) it generates a Team with 4
         players.  If called without `players` argument, it generates a
